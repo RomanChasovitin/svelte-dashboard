@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte';
 
-  import Checkbox from '../shared/Checkbox.svelte';
-  import buildFinancialChart, { financialData } from '../../charts/financial.js';
+  import Checkbox from './shared/Checkbox.svelte';
+  import buildFinancialChart, { financialData } from '../charts/financial.js';
 
   let isShowTurnover = true;
   let isShowMargin = true;
@@ -38,6 +38,7 @@
         background-repeat: no-repeat;
         &-title{
           font-size: 16px;
+          text-transform: uppercase;
         }
         &-text{
           font-size: 30px;

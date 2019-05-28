@@ -1,7 +1,9 @@
 <script>
 	import Header from './components/Header.svelte';
 	import Container from './components/shared/Container.svelte';
-	import Financial from './components/financial/Financial.svelte';
+	import Financial from './components/Financial.svelte';
+	import Cart from './components/Cart.svelte';
+	import Orders from './components/Orders.svelte';
 
 	let activeRange = 'day';
 
@@ -47,13 +49,13 @@
 			<div class="grid-item">
 				<Container>
 					<span slot="title">Корзина</span>
-					<div slot="content">Контент</div>
+					<div slot="content"><Cart /></div>
 				</Container>
 			</div>
 			<div class="grid-item">
 				<Container>
 					<span slot="title">Заказы</span>
-					<div slot="content">Контент</div>
+					<div slot="content"><Orders /></div>
 				</Container>
 			</div>
 			<div class="grid-item grid-item_full">
