@@ -1,0 +1,91 @@
+{
+  "admin": {
+    "for_day": false,
+    "amount_dashboard": {
+      "05/01/2019-00": {
+        "margin": 100,
+        "turnover": 1000
+      },
+      "05/02/2019-00": {
+        "margin": 200,
+        "turnover": 5000
+      },
+      "05/03/2019-00": {
+        "margin": 700,
+        "turnover": 7000
+      },
+      "05/04/2019-00": {
+        "margin": 0,
+        "turnover": 0
+      },
+      "05/05/2019-00": {
+        "margin": 120,
+        "turnover": 2000
+      },
+      "05/06/2019-00": {
+        "margin": 170,
+        "turnover": 3320
+      },
+      "05/07/2019-00": {
+        "margin": 1520,
+        "turnover": 2200
+      },
+      "05/08/2019-00": {
+        "margin": 700,
+        "turnover": 5000
+      },
+      "05/09/2019-00": {
+        "margin": 1000,
+        "turnover": 6000
+      }
+    },
+    "purchase_dashboard": {
+      "purchases_summary": 3,
+      "purchases_max": 24.0,
+      "purchases_avg": 12.333333333333334,
+      "success_summary": 0,
+      "canceled_summary": 0,
+      "errors_summary": 0,
+      "awaiting_summary": 1,
+      "carts_open": 1,
+      "carts_close": 3,
+      "graph_data": {
+        "05/17/2019-00": {
+          "awaiting_amount": 1.0
+        },
+        "05/18/2019-00": {
+          "awaiting_amount": 2.0
+        },
+        "05/19/2019-00": {
+          "awaiting_amount": 3.0
+        }
+      }
+    },
+    "orders_dashboard": {
+      "categories": {
+        "Красота и здоровье": [
+          2,
+          67
+        ],
+        "Мужская одежда": [
+          1,
+          33
+        ]
+      },
+      "regions": {
+        "Акмолинская область": [
+          1,
+          33
+        ],
+        "Атырауская область": [
+          1,
+          33
+        ],
+        "Алматинская область": [
+          1,
+          33
+        ]
+      }
+    }
+  }
+}

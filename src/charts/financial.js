@@ -4,30 +4,50 @@ export default function buildFinancialChart(ctx, data) {
   return new Chart(ctx, data);
 }
 
-export const financialData = {
-  type: 'line',
-  data: {
-    labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-    datasets: [
+export function transformToFinancialData(data, { isShowMargin, isShowTurnover, isDay }) {
+  const keys = Object.keys(data);
+  const margins = keys.map(key => data[key].margin);
+  const turnovers = keys.map(key => data[key].turnover);
+  const datasets = [];
+  if (isShowTurnover) {
+    datasets.push(
       { 
-        data: [100,500,400,200,800,2000,700,300,3000],
+        data: [...turnovers],
         label: "Оборот",
-        borderColor: "#3e95cd",
-        pointBackgroundColor: '#3e95cd',
+        borderColor: "#2BBAC3",
+        pointBackgroundColor: '#2BBAC3',
         fill: false
-      },
+      }
+    )
+  }
+  if (isShowMargin) {
+    datasets.push(
       { 
-        data: [282,350,411,502,635,809,947,1402,3700,5267],
+        data: [...margins],
         label: "Маржа",
-        borderColor: "#8e5ea2",
-        pointBackgroundColor: '#8e5ea2',
+        borderColor: "#AB64AC",
+        pointBackgroundColor: '#AB64AC',
         fill: false,
       }
-    ],
-  },
-  options: {
-    legend: {
-      display: false
+    )
+  }
+  let viewKeys = [...keys];
+  if (isDay) {
+    viewKeys = viewKeys.map(key => key.slice(0, -3));
+  } else {
+    viewKeys = viewKeys.map(key => key.substr(11, 2));
+  }
+  return {
+    type: 'line',
+    data: {
+      labels: [...viewKeys],
+      datasets,
     },
+    options: {
+      legend: {
+        display: false,
+        defaultFontSize: 20,
+      },
+    }
   }
 }

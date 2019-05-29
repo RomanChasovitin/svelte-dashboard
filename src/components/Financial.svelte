@@ -1,20 +1,39 @@
 <script>
-  import { onMount } from 'svelte';
+  import { beforeUpdate, onMount } from 'svelte';
 
   import Checkbox from './shared/Checkbox.svelte';
-  import buildFinancialChart, { financialData } from '../charts/financial.js';
+  import buildFinancialChart, { transformToFinancialData } from '../charts/financial.js';
 
+  export let data;
+  export let isDay;
+
+  let totalTurnover;
+  let totalMargin;
+  $: {
+    totalTurnover = 0;
+    totalMargin = 0;
+    Object.keys(data).forEach(key => {
+      totalTurnover += data[key].turnover;
+      totalMargin += data[key].margin;
+    })
+  }
+  let chart;
+  onMount(() => {
+    const financialData = transformToFinancialData(data, { isShowMargin, isShowTurnover, isDay });
+    chart = buildFinancialChart(document.querySelector('.financial__chart-canvas'), financialData);
+  });
+
+  beforeUpdate(() => {
+    if(!chart) return;
+    chart.clear();
+    const financialData = transformToFinancialData(data, { isShowMargin, isShowTurnover, isDay });
+    chart = buildFinancialChart(document.querySelector('.financial__chart-canvas'), financialData);
+  });
+  
   let isShowTurnover = true;
   let isShowMargin = true;
-  let chart;
-  
-  
   const toggleTurnover = () => isShowTurnover = !isShowTurnover;
   const toggleMargin = () => isShowMargin = !isShowMargin;
-
-  onMount(() => {
-    chart = buildFinancialChart(document.querySelector('#financial-chart'), financialData);
-  });
 
 </script>
 
@@ -76,14 +95,14 @@
   <div class="financial__info">
     <div class="financial__info-item financial__info-item--turnover">
       <span class="financial__info-item-title">Оборот</span>
-      <div class="financial__info-item-text">121 768 ₸</div>
+      <div class="financial__info-item-text">{Math.round(totalTurnover)} ₸</div>
     </div>
     <div class="financial__info-item financial__info-item--margin">
       <span class="financial__info-item-title">Маржа</span>
-      <div class="financial__info-item-text">26 615 ₸</div>
+      <div class="financial__info-item-text">{Math.round(totalMargin)} ₸</div>
     </div>
     <div class="financial__info-checkbox">
-      <Checkbox id='turnover' on:toggle={toggleTurnover} checked={isShowTurnover}>Оборот</Checkbox>
+      <Checkbox id='turnover' on:toggle={toggleTurnover} checked={isShowTurnover} color='#2BBAC3'>Оборот</Checkbox>
     </div>
     <div class="financial__info-checkbox">
       <Checkbox id='margin' on:toggle={toggleMargin} checked={isShowMargin} color='#AB64AC'>Маржа</Checkbox>

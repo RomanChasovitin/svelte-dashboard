@@ -3,7 +3,7 @@
 </script>
 
 <style lang="scss">
-  .container {
+  .svelte-container {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(147, 147, 147, 0.25);
@@ -19,11 +19,11 @@
   }
 </style>
 
-<div class="container">
-  <div class="container__title">
+<div class="svelte-container">
+  <div class="svelte-container__title">
     <slot name="title">Финансовые показатели</slot>
   </div>
-  <div class="container__body">
+  <div class="svelte-container__body">
     <slot name="content">Пусто</slot>
   </div>
 </div>

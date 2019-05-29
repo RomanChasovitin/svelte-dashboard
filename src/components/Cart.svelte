@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte';
-  import buildCartChart, { cartData } from '../charts/cart.js';
+  import buildCartChart, { transformToCartData } from '../charts/cart.js';
+  export let data;
   let chart;
 
   onMount(() => {
+    const cartData = transformToCartData(data.carts_close, data.carts_open);
     chart = buildCartChart(document.querySelector('.cart__chart-canvas'), cartData);
   });
 </script>
@@ -88,13 +90,13 @@
     <div class="cart__info-item">
       <div class="check">
         <h4 class="check__title">Средний чек</h4>
-        <div class="check__summ">1 768 ₸</div>
+        <div class="check__summ">{Math.round(data.purchases_avg)} ₸</div>
       </div>
     </div>
     <div class="cart__info-item">
       <div class="check">
         <h4 class="check__title">Макс. чек</h4>
-        <div class="check__summ">1 768 ₸</div>
+        <div class="check__summ">{Math.round(data.purchases_max)} ₸</div>
       </div>
     </div>
   </div>

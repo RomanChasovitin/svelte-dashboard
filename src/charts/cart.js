@@ -4,6 +4,32 @@ export default function buildCartChart(ctx, data) {
   return new Chart(ctx, data);
 }
 
+export function transformToCartData(payedCart, unpayedCart) {
+  return {
+    type: 'doughnut',
+    data: {
+      datasets: [
+        { 
+          label: "Корзина",
+          backgroundColor: ["#20AE80", "#CD4F4F"],
+          data: [payedCart, unpayedCart],
+          borderWidth: 3,
+          weight: 1,
+        },
+      ],
+      labels: [
+        'Оплаченные',
+        'Неоплаченные',
+      ]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+    }
+  }
+}
+
 export const cartData = {
   type: 'doughnut',
   data: {

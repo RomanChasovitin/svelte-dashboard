@@ -1,11 +1,14 @@
 <script>
   import { onMount } from 'svelte';
 
-  import buildOrdersChart, { ordersData } from '../charts/orders.js';
+  import buildOrdersChart, { transformToOrdersData } from '../charts/orders.js';
 
+  export let data;
   let chart;
   
   onMount(() => {
+    const { awaiting_summary, canceled_summary, success_summary, error_summary } = data;
+    const ordersData = transformToOrdersData(awaiting_summary, canceled_summary, success_summary, error_summary);
     chart = buildOrdersChart(document.querySelector('.orders__chart-canvas'), ordersData);
   });
 </script>
@@ -49,6 +52,11 @@
     }
     &_success{
       &:before{
+        background-color:#20AE80;
+      }
+    }
+    &_awaiting{
+      &:before{
         background-color: #4E73DF;
       }
     }
@@ -88,19 +96,20 @@
     <canvas class="orders__chart-canvas" width='200' height='200'></canvas>
   </div>
   <div class="orders__info">
-    <div class="orders__info-item" style="grid-column: 1/3;"><div class="order-type order-type_success">Успешные</div></div>
-    <div class="orders__info-item" style="grid-column: 3/5;"><div class="order-type order-type_canceled">Отмененные</div></div>
-    <div class="orders__info-item" style="grid-column: 5/7;"><div class="order-type order-type_error">С Ошибкой</div></div>
-    <div class="orders__info-item" style="grid-row: 2/3; grid-column: 1/4;">
+    <div class="orders__info-item" style="grid-column: 1/4;"><div class="order-type order-type_success">Успешные</div></div>
+    <div class="orders__info-item" style="grid-column: 4/7;"><div class="order-type order-type_awaiting">Ожидает оплаты</div></div>
+    <div class="orders__info-item" style="grid-column: 1/4; grid-row: 2/3;"><div class="order-type order-type_canceled">Отмененные</div></div>
+    <div class="orders__info-item" style="grid-column: 4/7; grid-row: 2/3;"><div class="order-type order-type_error">С Ошибкой</div></div>
+    <div class="orders__info-item" style="grid-row: 3/4; grid-column: 1/4;">
       <div class="check">
         <h4 class="check__title">Средний чек</h4>
-        <div class="check__summ">1 768 ₸</div>
+        <div class="check__summ">{Math.round(data.purchases_avg)} ₸</div>
       </div>
     </div>
-    <div class="orders__info-item" style="grid-row: 2/3; grid-column: 4/7;">
+    <div class="orders__info-item" style="grid-row: 3/4; grid-column: 4/7;">
       <div class="check">
         <h4 class="check__title">Макс. чек</h4>
-        <div class="check__summ">1 768 ₸</div>
+        <div class="check__summ">{Math.round(data.purchases_max)} ₸</div>
       </div>
     </div>
   </div>

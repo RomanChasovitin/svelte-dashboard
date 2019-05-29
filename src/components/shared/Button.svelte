@@ -8,6 +8,8 @@
   }
 
   export let active = false;
+  export let width;
+  export let disabled = false;
 </script>
 
 <style lang="scss">
@@ -24,7 +26,13 @@
     &.active{
       border-color: #4E73DF;
     }
+    &[disabled]{
+      background-color: #ebebeb;
+      border-color: transparent;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
   }
 </style>
 
-<button on:click={handleClick} class="button" class:active ><slot></slot></button>
+<button on:click={handleClick} style="width: {width}" class="button" class:active disabled={disabled}><slot></slot></button>
