@@ -32,6 +32,7 @@
 		activeRange = e.detail.range;
 		updateResponse();
 	};
+
 </script>
 
 <style lang="scss">
@@ -64,6 +65,7 @@
 	<div class="app">
 		<Header on:setActiveRange={setActiveRange} activeRange={activeRange} />
 		{#if $data}
+			{console.log($data, 'in template')}
 			<div class="grid">
 				<div class="grid-item grid-item_full">
 					<Container>

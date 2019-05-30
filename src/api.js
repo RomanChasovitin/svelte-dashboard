@@ -1,5 +1,6 @@
 import { data } from './store.js';
 
+// const MOCK_URL = 'http://localhost:3000/empty/'
 // const BASE_URL = 'http://localhost:3000/admin/';
 const BASE_URL = '/admin/dashboard_data/';
 
@@ -52,5 +53,7 @@ function getWeek() {
 export default function getResponse(type, customDateRange) {
   data.set(null);
   get(type, customDateRange)
-    .then(res => data.set(res))
+    .then(res => {
+      setTimeout(() => data.set(res), 200);
+    })
 };

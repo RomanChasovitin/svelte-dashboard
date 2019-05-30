@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, beforeUpdate } from 'svelte';
   import buildCartChart, { transformToCartData } from '../charts/cart.js';
   export let data;
   let chart;
