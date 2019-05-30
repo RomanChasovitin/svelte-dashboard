@@ -5,7 +5,7 @@
   let chart;
 
   onMount(() => {
-    const cartData = transformToCartData(data.carts_close, data.carts_open);
+    const cartData = transformToCartData(data.carts_open, data.carts_close);
     chart = buildCartChart(document.querySelector('.cart__chart-canvas'), cartData);
   });
 </script>
@@ -31,7 +31,7 @@
     }
   }
 
-  .payed, .unpayed {
+  .open, .close {
     display: block;
     position: relative;
     color: #202020;
@@ -49,11 +49,11 @@
       transform: translateY(-50%);
     }
   }
-  .payed:before{
-    background-color: #20AE80;
+  .open:before{
+    background-color: #4E73DF;
   }
-  .unpayed:before{
-    background-color: #CD4F4F;
+  .close:before{
+    background-color: #20AE80;
   }
 
   .check{
@@ -76,28 +76,28 @@
   }
 </style>
 
-<div class="cart">
-  <div class="cart__chart">
-    <canvas class="cart__chart-canvas" width="200" height="200"></canvas>
-  </div>
-  <div class="cart__info">
-    <div class="cart__info-item">
-      <span class="payed">Оплаченные</span>
+  <div class="cart">
+    <div class="cart__chart">
+      <canvas class="cart__chart-canvas" width="200" height="200"></canvas>
     </div>
-    <div class="cart__info-item">
-      <div class="unpayed">Неоплаченные</div>
-    </div>
-    <div class="cart__info-item">
-      <div class="check">
-        <h4 class="check__title">Средний чек</h4>
-        <div class="check__summ">{Math.round(data.purchases_avg)} ₸</div>
+    <div class="cart__info">
+      <div class="cart__info-item">
+        <span class="open">Открытые</span>
+      </div>
+      <div class="cart__info-item">
+        <div class="close">Закрытые</div>
+      </div>
+      <div class="cart__info-item">
+        <div class="check">
+          <h4 class="check__title">Кол-во открытых</h4>
+          <div class="check__summ">{Math.round(data.carts_open)} шт.</div>
+        </div>
+      </div>
+      <div class="cart__info-item">
+        <div class="check">
+          <h4 class="check__title">Кол-во закрытых</h4>
+          <div class="check__summ">{Math.round(data.carts_close)} шт.</div>
+        </div>
       </div>
     </div>
-    <div class="cart__info-item">
-      <div class="check">
-        <h4 class="check__title">Макс. чек</h4>
-        <div class="check__summ">{Math.round(data.purchases_max)} ₸</div>
-      </div>
-    </div>
   </div>
-</div>

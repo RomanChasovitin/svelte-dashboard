@@ -1,7 +1,9 @@
+import { data } from './store.js';
+
 // const BASE_URL = 'http://localhost:3000/admin/';
 const BASE_URL = '/admin/dashboard_data/';
 
-export default async function getResponse(type, customDateRange) {
+async function get(type, customDateRange) {
   let url = BASE_URL;  
   if (type === 'custom') {
     url += `?transaction_date__gte=${customDateRange.dateStart}&transaction_date__lte=${customDateRange.dateEnd}`;
@@ -46,3 +48,9 @@ function getWeek() {
     weekEnd: `${lastday.getFullYear()}-${lastday.getMonth() + 1}-${lastday.getDate()}`,
   }
 }
+
+export default function getResponse(type, customDateRange) {
+  data.set(null);
+  get(type, customDateRange)
+    .then(res => data.set(res))
+};

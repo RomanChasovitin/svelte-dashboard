@@ -87,5 +87,13 @@
         ]
       }
     }
+  },
+  "empty": {
+    "for_day":true,
+    "amount_dashboard":{},
+    "purchase_dashboard":
+    {"purchases_summary":0,"purchases_max":0,"purchases_avg":0,"success_summary":0,"canceled_summary":0,"errors_summary":0,"awaiting_summary":0,"carts_open":0,"carts_close":0,"graph_data":{}}
+    ,"orders_dashboard":
+    {"categories":{},"regions":{}}
   }
 }

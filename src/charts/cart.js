@@ -4,22 +4,22 @@ export default function buildCartChart(ctx, data) {
   return new Chart(ctx, data);
 }
 
-export function transformToCartData(payedCart, unpayedCart) {
+export function transformToCartData(openCart, closedCart) {
   return {
     type: 'doughnut',
     data: {
       datasets: [
         { 
           label: "Корзина",
-          backgroundColor: ["#20AE80", "#CD4F4F"],
-          data: [payedCart, unpayedCart],
+          backgroundColor: ["#4E73DF", "#20AE80"],
+          data: [openCart, closedCart],
           borderWidth: 3,
           weight: 1,
         },
       ],
       labels: [
-        'Оплаченные',
-        'Неоплаченные',
+        'Открытые',
+        'Закрытые',
       ]
     },
     options: {
