@@ -31,7 +31,7 @@
     }
   }
 
-  .open, .close {
+  .open-itm, .close-itm {
     display: block;
     position: relative;
     color: #202020;
@@ -49,10 +49,10 @@
       transform: translateY(-50%);
     }
   }
-  .open:before{
+  .open-itm:before{
     background-color: #4E73DF;
   }
-  .close:before{
+  .close-itm:before{
     background-color: #20AE80;
   }
 
@@ -82,10 +82,10 @@
     </div>
     <div class="cart__info">
       <div class="cart__info-item">
-        <span class="open">Открытые</span>
+        <span class="open-itm">Открытые</span>
       </div>
       <div class="cart__info-item">
-        <div class="close">Закрытые</div>
+        <div class="close-itm">Закрытые</div>
       </div>
       <div class="cart__info-item">
         <div class="check">

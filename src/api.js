@@ -8,9 +8,6 @@ async function get(type, customDateRange) {
   let url = BASE_URL;  
   if (type === 'custom') {
     url += `?transaction_date__gte=${customDateRange.dateStart}&transaction_date__lte=${customDateRange.dateEnd}`;
-  } else if (type === 'month') {
-    const month = getMonth();
-    url += `?transaction_date__gte=${month.monthStart}&transaction_date__lte=${month.monthEnd}`;
   } else if (type === 'day') {
     const day = getDay();
     url += `?transaction_date__gte=${day}&transaction_date__lte=${day}`;
