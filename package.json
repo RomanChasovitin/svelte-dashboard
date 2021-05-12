@@ -23,7 +23,7 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "json-server": "^0.15.0",
     "node-sass": "^4.12.0"
   }
