@@ -3629,10 +3629,10 @@ svelte-preprocess-filter@^1.0.0:
   resolved "https://registry.yarnpkg.com/svelte-preprocess-filter/-/svelte-preprocess-filter-1.0.0.tgz#21f3cee27c0f2232bcd671b183352fb1fdd3fdcb"
   integrity sha512-92innv59nyEx24xbfcSurB5ocwC8qFdDtGli/JVMHzJsxyvV2yjQKIcbUqU9VIV5mKUWO2PoY93nncS2yF4ULQ==
 
-svelte@^3.0.0:
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.4.3.tgz#ef1d98f56a2dcc94926ceedbbb857e7fdfc68902"
-  integrity sha512-pFDW7xIUjdJjdJAO1R9DfhAAuJUj0z8nltvAKJZGMard17sOHIxjYHG1+I74ydyHIrftesF8pk7t27EPC1JyFg==
+svelte@^3.49.0:
+  version "3.49.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.49.0.tgz#5baee3c672306de1070c3b7888fc2204e36a4029"
+  integrity sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==
 
 tar@^2.0.0:
   version "2.2.2"
